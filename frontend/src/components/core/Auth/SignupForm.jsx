@@ -249,7 +249,7 @@ function SignupForm() {
 
     try {
       const response = await axios.post(
-        "https://studyapphost-api.vercel.app/register",
+        "https://studyapphost-api.vercel.app/signup",
         signupData
       );
       console.log("Registration successful!", response.data);
