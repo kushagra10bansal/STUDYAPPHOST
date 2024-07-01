@@ -192,22 +192,16 @@ function Navbar() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchSubLinks = async () => {
+    (async () => {
       setLoading(true);
       try {
         const res = await apiConnector("GET", categories.CATEGORIES_API);
-        if (res.data && res.data.data) {
-          setSubLinks(res.data.data);
-        } else {
-          console.error("Invalid response structure:", res);
-        }
+        setSubLinks(res.data.data || []);
       } catch (error) {
-        console.error("Could not fetch Categories.", error);
+        console.log("Could not fetch Categories.", error);
       }
       setLoading(false);
-    };
-
-    fetchSubLinks();
+    })();
   }, []);
 
   const matchRoute = (route) => {
@@ -245,11 +239,12 @@ function Navbar() {
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
-                        ) : subLinks && subLinks.length ? (
+                        ) : subLinks.length ? (
                           <>
                             {subLinks
                               .filter(
-                                (subLink) => subLink?.courses?.length > 0
+                                (subLink) =>
+                                  subLink?.courses && subLink.courses.length > 0
                               )
                               .map((subLink, i) => (
                                 <Link
@@ -324,6 +319,5 @@ function Navbar() {
 }
 
 export default Navbar;
-
 
 
