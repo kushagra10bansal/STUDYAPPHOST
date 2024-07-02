@@ -29,7 +29,7 @@ app.use(
 	cors({
 		origin: ["https://studyapphost-frontend.vercel.app"],
 		methods: ["POST","GET","PUT","DELETE"],
-		allowedHeaders: ['Content-Type', 'Authorization'],
+		allowedHeaders: ["Content-Type", "Authorization", "Accept", "Origin", "X-Requested-With"],
 		credentials: true,
 	})
 );
