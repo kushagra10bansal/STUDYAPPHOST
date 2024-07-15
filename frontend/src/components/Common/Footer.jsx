@@ -8,7 +8,7 @@ import Logo from "../../assets/Logo/Logo-Full-Light.png";
 // Icons
 import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
 
-const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
+const BottomFooter = [];
 const Resources = [
   "Articles",
   "Blog",
